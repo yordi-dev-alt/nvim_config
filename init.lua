@@ -190,6 +190,17 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Toggle diagnostics
+vim.keymap.set('n', '<leader>td', function()
+  if vim.diagnostic.is_disabled() then
+    vim.diagnostic.enable()
+    print 'Diagnostics are enabled'
+  else
+    vim.diagnostic.disable()
+    print 'Diagnostics are disabled'
+  end
+end, { desc = '[T]oggle [D]iagnostics' })
+
 -- Toggle spell checking
 vim.keymap.set('n', '<leader>ts', function()
   vim.opt.spell = not vim.o.spell
